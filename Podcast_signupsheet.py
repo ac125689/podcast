@@ -2,6 +2,7 @@ import streamlit as st
 from pandas import DataFrame
 from google.oauth2 import service_account
 from gspread_pandas import Spread,Client
+import time
 
 # Create a connection object.
 import ssl
@@ -33,7 +34,7 @@ def load_the_spreadsheet(spreadsheetname):
     df = DataFrame(worksheet.get_all_records())
     return df
 def update_the_signup_spreadsheet(spreadsheetname,dataframe):
-    col = ['Block 1', 'Block 2', 'Block 3', 'Lunch A', 'Lunch B', 'Block 5', 'Block 6']
+    col = ['Date','Block 1', 'Block 2', 'Block 3', 'Lunch A', 'Lunch B', 'Block 5', 'Block 6']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 def update_the_nameOfPeople_spreadsheet(spreadsheetname,dataframe):
     col = ['Date','Name of the person who regster','Email of the person who regster', 'Other 1', 'Other 2', 'Other 3']
@@ -78,28 +79,30 @@ def main():
     name3_1 = st.text_input("Name of person two")
     name4_1 = st.text_input("Name of person three")
     if st.button("Submit"):
+        with st.spinner('Wait for it...'):
+            opt = { 'Date': [date],
+            'Block 1' : [block1],
+            'Block 2': [block2],
+            'Block 3': [block3],
+            'Lunch A': [lunchA],
+            'Lunch B': [lunchB],
+            'Block 5': [block5],
+            'Block 6': [block6]}
+            opt_df = DataFrame(opt)
+            df = load_the_spreadsheet('Sign-up name')
+            new_df = df.append(opt_df,ignore_index=True)
+            update_the_signup_spreadsheet('Sign-up name',new_df)
+            opt2 = {'Date' :[date],
+            'Name of the person who regster' : [firstLastName],
+            'Email of the person who regster' : [email],
+            'Other 1': [name2_1],
+            'Other 2': [name3_1],
+            'Other 3': [name4_1]}
+            opt2_df = DataFrame(opt2)
+            df2 = load_the_spreadsheet('name of people recording')
+            new_df2 = df2.append(opt2_df,ignore_index=True)
+            update_the_nameOfPeople_spreadsheet('name of people recording',new_df2)
         st.success("You are good to go.")
-        opt = { 'Block 1' : [block1],
-        'Block 2': [block2], 
-        'Block 3': [block3], 
-        'Lunch A': [lunchA], 
-        'Lunch B': [lunchB], 
-        'Block 5': [block5], 
-        'Block 6': [block6]}
-        opt_df = DataFrame(opt)
-        df = load_the_spreadsheet('Sign-up name')
-        new_df = df.append(opt_df,ignore_index=True)
-        update_the_signup_spreadsheet('Sign-up name',new_df)
-        opt2 = {'Date' :[date],
-        'Name of the person who regster' : [firstLastName], 
-        'Email of the person who regster':[email],
-        'Other 1': [name2_1], 
-        'Other 2': [name3_1],
-        'Other 3': [name4_1]}
-        opt2_df = DataFrame(opt2)
-        df2 = load_the_spreadsheet('name of people recording')
-        new_df2 = df2.append(opt2_df,ignore_index=True)
-        update_the_nameOfPeople_spreadsheet('name of people recording',new_df2)
         st.balloons()
 
 if __name__ == "__main__":
