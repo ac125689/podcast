@@ -43,7 +43,7 @@ def main():
     st.title('Podcast Sign-up Form')
     firstLastName = st.text_input("Your First and Last Name")
     email = st.text_input("Write your school email")
-    date = st.date_input('Which day do you want record?')
+    date = st.date_input('Which day do you want to record?')
     block = st.selectbox("Select a Block", ('Block 1', 'Block 2', 'Block 3', 'Lunch A', 'Lunch B', 'Block 5', 'Block 6'))
     if block == 'Block 1':
         block1 = firstLastName
