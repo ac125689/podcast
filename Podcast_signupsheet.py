@@ -36,13 +36,14 @@ def update_the_signup_spreadsheet(spreadsheetname,dataframe):
     col = ['Block 1', 'Block 2', 'Block 3', 'Lunch A', 'Lunch B', 'Block 5', 'Block 6']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 def update_the_nameOfPeople_spreadsheet(spreadsheetname,dataframe):
-    col = ['Date','Name of the person who regster', 'Other 1', 'Other 2', 'Other 3']
+    col = ['Date','Name of the person who regster','Email of the person who regster', 'Other 1', 'Other 2', 'Other 3']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 
 def main():
     st.title('Podcast Sign-up Form')
-    firstLastName = st.text_input("your first and last name")
-    date = st.date_input('which day do you want record?')
+    firstLastName = st.text_input("Your First and Last Name")
+    email = st.text_input("Write your school email")
+    date = st.date_input('Which day do you want record?')
     block = st.selectbox("Select a Block", ('Block 1', 'Block 2', 'Block 3', 'Lunch A', 'Lunch B', 'Block 5', 'Block 6'))
     if block == 'Block 1':
         block1 = firstLastName
@@ -73,9 +74,9 @@ def main():
     else:
         block6 = 'na'
     st.write("List the names of the people who will be recording with you in the boxes below.  One name per box.  If you have less than 3 additional members, type N/A in the box that is blank.")
-    name2_1 = st.text_input("name of person one")
-    name3_1 = st.text_input("name of person two")
-    name4_1 = st.text_input("name of person three")
+    name2_1 = st.text_input("Name of person one")
+    name3_1 = st.text_input("Name of person two")
+    name4_1 = st.text_input("Name of person three")
     if st.button("Submit"):
         st.success("You are good to go.")
         opt = { 'Block 1' : [block1],
