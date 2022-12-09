@@ -91,7 +91,8 @@ def main():
         new_df = df.append(opt_df,ignore_index=True)
         update_the_signup_spreadsheet('Sign-up name',new_df)
         opt2 = {'Date' :[date],
-        'Name of the person who regster' : [firstLastName],
+        'Name of the person who regster' : [firstLastName], 
+        'Email of the person who regster':[email],
         'Other 1': [name2_1], 
         'Other 2': [name3_1],
         'Other 3': [name4_1]}
