@@ -77,6 +77,8 @@ def main():
     name3_1 = st.text_input("name of person two")
     name4_1 = st.text_input("name of person three")
     if st.button("Submit"):
+        st.success("You are good to go.")
+        st.balloons()
         opt = { 'Block 1' : [block1],
         'Block 2': [block2], 
         'Block 3': [block3], 
@@ -97,8 +99,6 @@ def main():
         df2 = load_the_spreadsheet('name of people recording')
         new_df2 = df2.append(opt2_df,ignore_index=True)
         update_the_nameOfPeople_spreadsheet('name of people recording',new_df2)
-        st.balloons()
-        st.success("You are good to go.")
 
 
 if __name__ == "__main__":
