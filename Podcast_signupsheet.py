@@ -36,12 +36,13 @@ def update_the_signup_spreadsheet(spreadsheetname,dataframe):
     col = ['Block 1', 'Block 2', 'Block 3', 'Lunch A', 'Lunch B', 'Block 5', 'Block 6']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 def update_the_nameOfPeople_spreadsheet(spreadsheetname,dataframe):
-    col = ['Name of the person who regster', 'Other 1', 'Other 2', 'Other 3']
+    col = ['Date','Name of the person who regster', 'Other 1', 'Other 2', 'Other 3']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 
 def main():
     st.title('Podcast Sign-up Form')
     firstLastName = st.text_input("your first and last name")
+    date = st.date_input('which day do you want record?')
     block = st.selectbox("Select a Block", ('Block 1', 'Block 2', 'Block 3', 'Lunch A', 'Lunch B', 'Block 5', 'Block6'))
     if block == 'Block 1':
         block1 = firstLastName
@@ -87,7 +88,8 @@ def main():
         df = load_the_spreadsheet('Sign-up name')
         new_df = df.append(opt_df,ignore_index=True)
         update_the_signup_spreadsheet('Sign-up name',new_df)
-        opt2 = { 'Name of the person who regster' : [firstLastName],
+        opt2 = {'Date' :[date],
+        'Name of the person who regster' : [firstLastName],
         'Other 1': [name2_1], 
         'Other 2': [name3_1],
         'Other 3': [name4_1]}
