@@ -48,31 +48,31 @@ def main():
     if block == 'Block 1':
         block1 = firstLastName
     else:
-        block1 = 'na'
+        block1 = ' '
     if block == 'Block 2':
         block2 = firstLastName
     else:
-        block2 = 'na'
+        block2 = ' '
     if block == 'Block 3':
         block3 = firstLastName
     else:
-        block3 = 'na'
+        block3 = ' '
     if block == 'Lunch A':
         lunchA = firstLastName
     else:
-        lunchA = 'na'
+        lunchA = ' '
     if block == 'Lunch B':
         lunchB = firstLastName
     else:
-        lunchB = 'na'
+        lunchB = ' '
     if block == 'Block 5':
         block5 = firstLastName
     else:
-        block5 = 'na'
+        block5 = ' '
     if block == 'Block 6':
         block6 = firstLastName
     else:
-        block6 = 'na'
+        block6 = ' '
     st.write("List the names of the people who will be recording with you in the boxes below.  One name per box.  If you have less than 3 additional members, type N/A in the box that is blank.")
     name2_1 = st.text_input("Name of person one")
     name3_1 = st.text_input("Name of person two")
