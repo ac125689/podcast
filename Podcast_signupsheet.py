@@ -72,7 +72,7 @@ def main():
         block6 = firstLastName
     else:
         block6 = 'na'
-    st.write("Now please write three other name your go to do podcast with. If there is less than ")
+    st.write("List the names of the people who will be recording with you in the boxes below.  One name per box.  If you have less than 3 additional members, type N/A in the box that is blank.")
     name2_1 = st.text_input("name of person one")
     name3_1 = st.text_input("name of person two")
     name4_1 = st.text_input("name of person three")
