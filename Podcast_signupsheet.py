@@ -2,7 +2,15 @@ import streamlit as st
 from pandas import DataFrame
 from google.oauth2 import service_account
 from gspread_pandas import Spread,Client
-import time
+
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 # Create a connection object.
 import ssl
