@@ -2,7 +2,6 @@ import streamlit as st
 from pandas import DataFrame
 from google.oauth2 import service_account
 from gspread_pandas import Spread,Client
-from PIL import Image
 
 hide_st_style = """
             <style>
@@ -50,7 +49,6 @@ def update_the_nameOfPeople_spreadsheet(spreadsheetname,dataframe):
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 
 def main():
-    st.image(image1)
     st.title('Podcast Sign-up Form')
     firstLastName = st.text_input("Your First and Last Name")
     email = st.text_input("Write your school email")
