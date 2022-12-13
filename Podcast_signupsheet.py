@@ -11,7 +11,6 @@ hide_st_style = """
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
-image1 = Image.open('WW-P HSS-1.png')
 # Create a connection object.
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
