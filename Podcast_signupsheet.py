@@ -1,5 +1,6 @@
 import streamlit as st
 from pandas import DataFrame
+import datetime as dt
 from google.oauth2 import service_account
 from gspread_pandas import Spread,Client
 
@@ -45,6 +46,9 @@ def update_the_signup_spreadsheet(spreadsheetname,dataframe):
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 def update_the_nameOfPeople_spreadsheet(spreadsheetname,dataframe):
     col = ['Date','Name of the person who regster','Email of the person who regster', 'Other 1', 'Other 2', 'Other 3']
+    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
+def update_master_stroage_spreadsheet(spreadsheetname,dataframe):
+    col = ['Date and Time','Name of the person who regster']
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 
 def main():
@@ -109,6 +113,12 @@ def main():
             df2 = load_the_spreadsheet('name of people recording')
             new_df2 = df2.append(opt2_df,ignore_index=True)
             update_the_nameOfPeople_spreadsheet('name of people recording',new_df2)
+            opt3 = {'Date and Time' : dt.datetime.now(),
+            'Name of the person who regster': [firstLastName]}
+            opt3_df = DataFrame(opt3)
+            df3 = load_the_spreadsheet('master stroage')
+            new_df3 = df3.append(opt3_df,ignore_index = True)
+            update_the_nameOfPeople_spreadsheet('master stroage',new_df3)
         st.success("You are good to go.")
         st.balloons()
 
