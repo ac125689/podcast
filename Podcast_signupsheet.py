@@ -49,7 +49,7 @@ def update_the_nameOfPeople_spreadsheet(spreadsheetname,dataframe):
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 def update_master_stroage_spreadsheet(spreadsheetname,dataframe):
     col = ['Date and Time','Name of the person who regster']
-    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
+    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = True)
 
 def main():
     st.title('Podcast Sign-up Form')
