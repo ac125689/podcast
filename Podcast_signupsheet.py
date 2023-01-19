@@ -113,7 +113,7 @@ def main():
             df2 = load_the_spreadsheet('name of people recording')
             new_df2 = df2.append(opt2_df,ignore_index=True)
             update_the_nameOfPeople_spreadsheet('name of people recording',new_df2)
-            opt3 = {'Date and Time' : dt.datetime.now(),
+            opt3 = {'Date and Time' : [dt.datetime.now()],
             'Name of the person who regster': [firstLastName]}
             opt3_df = DataFrame(opt3)
             df3 = load_the_spreadsheet('master stroage')
