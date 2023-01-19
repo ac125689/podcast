@@ -49,7 +49,7 @@ def update_the_nameOfPeople_spreadsheet(spreadsheetname,dataframe):
     spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 def update_master_stroage_spreadsheet(spreadsheetname,dataframe):
     col = ['Date and Time','Name of the person who regster']
-    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = True)
+    spread.df_to_sheet(dataframe[col],sheet = spreadsheetname,index = False)
 
 def main():
     st.title('Podcast Sign-up Form')
@@ -118,7 +118,7 @@ def main():
             opt3_df = DataFrame(opt3)
             df3 = load_the_spreadsheet('master stroage')
             new_df3 = df3.append(opt3_df,ignore_index = True)
-            update_the_nameOfPeople_spreadsheet('master stroage',new_df3)
+            update_master_stroage_spreadsheet('master stroage',new_df3)
         st.success("You are good to go.")
         st.balloons()
 
